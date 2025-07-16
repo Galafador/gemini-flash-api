@@ -5,6 +5,10 @@ This project is a RESTful API built with ExpressJS that integrates with Google G
 3. Document + Text prompt (Document analysis)
 4. Audio + Text prompt (Audio transcription and analysis)
 
+## Prerequisite
+1. Node.js v18+
+2. Gemini API key
+
 ## running the server
 1. download or clone the files in this repository
 2. install dependencies with ```npm install```
