@@ -19,7 +19,7 @@ const upload = multer({
 
 // Check for Gemini API key
 if (!process.env.GEMINI_API_KEY) {
-    throw new Error('GEMINI_API_KEY is not defined in your .env file')
+    throw new Error('GEMINI_API_KEY is not defined in .env file')
 }
 
 // Setup environment
