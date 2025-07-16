@@ -75,7 +75,7 @@ app.post('/generate-text', async (req, res) => {
 
 // End-point to upload image and receive descriptive text
 app.post('/generate-from-image', upload.single('image'), async (req, res) => {
-    const prompt = req.body.prompt || 'Describe the image'
+    const prompt = req.body.prompt || 'Describe this image:'
     const image = imageToGenerativePart(req.file)
 
     if (!image) {
