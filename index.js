@@ -32,13 +32,10 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
 const model = genAI.getGenerativeModel({ model: MODEL_NAME })
 
 // helper function to convert an image file to a format that gemini understands
-// TANYA: harus bikin manual kah ini? ngga ada di library yg sudah diinstall?
-// Error ga nemu functionnya, jadi bikin sendiri.
 function imageToGenerativePart(file) {
     const imageBuffer = fs.readFileSync(file.path)
     const mimeType = file.mimetype
 
-    console.log(`imageBuffer is: ${imageBuffer}`)
     if (!mimeType.startsWith('image/')) {
         throw new Error(`Uploaded file is not an image`)
     }
@@ -63,7 +60,7 @@ app.post('/generate-text', async (req, res) => {
 
     try {
         const result = await model.generateContent(prompt)
-        const response = await result.response
+        const response = result.response
         res.json({ output: response.text() })
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -83,7 +80,7 @@ app.post('/generate-from-image', upload.single('image'), async (req, res) => {
     }
     try {
         const result = await model.generateContent([prompt, image])
-        const response = await result.response
+        const response = result.response
         res.json({ output: response.text() })
     } catch (error) {
         res.status(500).json({
@@ -110,7 +107,7 @@ app.post('/generate-from-document', upload.single('document'), async (req, res) 
 
     try {
         const result = await model.generateContent([prompt, documentPart])
-        const response = await result.response
+        const response = result.response
         res.json({ output: response.text() })
     } catch (error) {
         res.status(500).json({
@@ -137,7 +134,7 @@ app.post('/generate-from-audio', upload.single('audio'), async (req, res) => {
 
     try {
         const result = await model.generateContent([prompt, audioPart])
-        const response = await result.response
+        const response = result.response
         res.json({ output: response.text() })
     } catch (error) {
         res.status(500).json({
