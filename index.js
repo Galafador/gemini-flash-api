@@ -118,7 +118,7 @@ app.post('/generate-from-document', upload.single('document'), async (req, res) 
         })
     } finally {
         fs.unlinkSync(req.file.path)
-        console.log("generate-from-image request completed successfully")
+        console.log("generate-from-document request completed successfully")
     }
 })
 
@@ -145,7 +145,7 @@ app.post('/generate-from-audio', upload.single('audio'), async (req, res) => {
         })
     } finally {
         fs.unlinkSync(req.file.path)
-        console.log("generate-from-image request completed successfully")
+        console.log("generate-from-audio request completed successfully")
     }
 })
 
